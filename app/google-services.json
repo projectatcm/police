@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "159367469360",
+    "firebase_url": "https://opsandroid-cd95c.firebaseio.com",
+    "project_id": "opsandroid-cd95c",
+    "storage_bucket": "opsandroid-cd95c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:159367469360:android:53a4c2c9a8bfa03f",
+        "android_client_info": {
+          "package_name": "com.codemagos.policeapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "159367469360-f04m7tmpqge31eifcdprscpvurib2slm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.codemagos.policeapp",
+            "certificate_hash": "4b071d53053b90658556ede0ae0096b869c4f1d6"
+          }
+        },
+        {
+          "client_id": "159367469360-g2617sbq1c0vvr47mnrujlifbk5otu6a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpTBKnXn9TcJaDINwwG5RGZq7U0Wylt_4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "159367469360-g2617sbq1c0vvr47mnrujlifbk5otu6a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
