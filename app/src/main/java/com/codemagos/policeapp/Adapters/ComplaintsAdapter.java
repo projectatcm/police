@@ -26,7 +26,7 @@ public class ComplaintsAdapter extends ArrayAdapter {
     Activity activity;
 
     public ComplaintsAdapter(Activity activity,ArrayList titles,ArrayList dates,ArrayList status) {
-        super(activity, R.layout.listview_news_row,titles);
+        super(activity, R.layout.list_complaint_row,titles);
         this.activity = activity;
         this.titles = titles;
         this.dates = dates;
@@ -37,7 +37,7 @@ public class ComplaintsAdapter extends ArrayAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater layoutInflater = activity.getLayoutInflater();
-        View rowView = layoutInflater.inflate(R.layout.listview_news_row,null);
+        View rowView = layoutInflater.inflate(R.layout.list_complaint_row,null);
 
         TextView txt_status = (TextView) rowView.findViewById(R.id.txt_status);
         TextView txt_title = (TextView) rowView.findViewById(R.id.txt_title);

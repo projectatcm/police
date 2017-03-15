@@ -45,8 +45,8 @@ ListView list_complaints;
 
         @Override
         protected void onPostExecute(String response) {
-            Log.e("login", response);
-            try {
+            Log.e("complaints", response);
+      try {
                 JSONObject responseObject = new JSONObject(response);
                 if (responseObject.getString("status").equals("success")) {
                     Toast.makeText(getApplicationContext(), responseObject.getString("message"), Toast.LENGTH_SHORT).show();
@@ -54,23 +54,23 @@ ListView list_complaints;
                     final ArrayList ids = new ArrayList();
                     final ArrayList titles = new ArrayList();
                     ArrayList dates = new ArrayList();
-                    ArrayList images = new ArrayList();
+                    ArrayList status = new ArrayList();
 
                     for (int i = 0; i < newsArray.length(); i++) {
                         JSONObject news_item = newsArray.getJSONObject(i);
                         String id = news_item.getString("id");
                         String title = news_item.getString("title");
                         String date = news_item.getString("date");
-                        String image = news_item.getString("image");
+                        String stat = news_item.getString("status");
                         // adding data to arraylist
                         ids.add(id);
                         titles.add(title);
                         dates.add(date);
-                        images.add(image);
+                        status.add(stat);
                     }
 
                     // creating listadapter
-                    ComplaintsAdapter complaintsAdapter = new ComplaintsAdapter(ComplaintsActivity.this, titles, dates, images);
+                    ComplaintsAdapter complaintsAdapter = new ComplaintsAdapter(ComplaintsActivity.this, titles, dates, status);
                     // setting adpter to listview
                     list_complaints.setAdapter(complaintsAdapter);
                     // setting on item click listener to listview
