@@ -41,7 +41,16 @@
         </service>
 
         <activity android:name=".HomeActivity" />
-        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".LoginActivity" />
+        <activity
+            android:name=".NewsViewActivity"
+            android:label="@string/title_activity_news_view"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ComplaintRegisterActivity"
+            android:label="@string/title_activity_complaint_register"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ComplaintsActivity"></activity>
     </application>
 
 </manifest>

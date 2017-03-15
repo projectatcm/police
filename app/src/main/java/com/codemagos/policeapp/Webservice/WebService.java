@@ -24,7 +24,7 @@ import java.util.List;
 public class WebService {
 
 /*    static String reg_url = "http://codemagos.in/Mybook/index.php";*/
-    static String SITE_URL = "http://10.0.2.2/project/ops_server/webservice/";
+    static String SITE_URL = "http://192.168.1.102/project/ops_server/webservice/";
 
     public static String postData(String action_URL, String data) {
         String responce = "";
@@ -43,7 +43,7 @@ public class WebService {
             bufferedWriter.close();
             outputStream.close();
             InputStream inputStream = httpURLConnection.getInputStream();
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
             String line = "";
 
             while ((line = bufferedReader.readLine()) != null) {
@@ -79,7 +79,7 @@ public class WebService {
             httpURLConnection.setRequestMethod("GET");
             httpURLConnection.setDoOutput(true);
             InputStream inputStream = httpURLConnection.getInputStream();
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
             String line = "";
             while ((line = bufferedReader.readLine()) != null) {
                 responce += line;
@@ -142,6 +142,11 @@ public class WebService {
     }
     public static String getNews(String id) {
         String url = "get_news.php?id="+id;
+        String responce = getData(url);
+        return responce;
+    }
+    public static String getComplaint(String id) {
+        String url = "get_complaint.php?id="+id;
         String responce = getData(url);
         return responce;
     }

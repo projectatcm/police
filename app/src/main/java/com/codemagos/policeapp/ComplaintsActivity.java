@@ -10,7 +10,9 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.codemagos.policeapp.Adapters.ComplaintsAdapter;
 import com.codemagos.policeapp.Adapters.NewsListAdapter;
+import com.codemagos.policeapp.SharedPreferences.SharedPreferencesStore;
 import com.codemagos.policeapp.Webservice.WebService;
 
 import org.json.JSONArray;
@@ -19,23 +21,25 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class NewsActivity extends AppCompatActivity {
-    ListView list_news;
-
+public class ComplaintsActivity extends AppCompatActivity {
+ListView list_complaints;
+    SharedPreferencesStore spStore;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_news);
-        list_news = (ListView) findViewById(R.id.list_news);
+        setContentView(R.layout.activity_complaints);
+        spStore = new SharedPreferencesStore(getApplicationContext());
+        list_complaints = (ListView) findViewById(R.id.list_complaints);
         BackTask backTask = new BackTask();
         backTask.execute();
+
     }
 
     protected class BackTask extends AsyncTask<String, String, String> {
 
         @Override
         protected String doInBackground(String... params) {
-            return WebService.getNews();
+            return WebService.getComplaint(spStore.getID());
 
         }
 
@@ -66,11 +70,11 @@ public class NewsActivity extends AppCompatActivity {
                     }
 
                     // creating listadapter
-                    NewsListAdapter newsListAdapter = new NewsListAdapter(NewsActivity.this, titles, dates, images);
+                    ComplaintsAdapter complaintsAdapter = new ComplaintsAdapter(ComplaintsActivity.this, titles, dates, images);
                     // setting adpter to listview
-                    list_news.setAdapter(newsListAdapter);
+                    list_complaints.setAdapter(complaintsAdapter);
                     // setting on item click listener to listview
-                    list_news.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    list_complaints.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                             String clicked_id = ids.get(position).toString();
@@ -93,3 +97,5 @@ public class NewsActivity extends AppCompatActivity {
         }
     }
 }
+
+

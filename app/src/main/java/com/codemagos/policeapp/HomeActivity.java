@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.codemagos.policeapp.SharedPreferences.SharedPreferencesStore;
@@ -21,23 +22,21 @@ SharedPreferencesStore spStore;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         spStore = new SharedPreferencesStore(getApplicationContext());
-        BackTask bb = new BackTask();
-        bb.execute();
+
     }
 
 
+    public void navigation(View v){
+        switch (v.getId()){
+            case R.id.btn_news:
+                startActivity(new Intent(getApplicationContext(),NewsActivity.class));
+                break;
+            case R.id.btn_complaints:
+                startActivity(new Intent(getApplicationContext(),ComplaintsActivity.class));
+                break;
 
-    protected class BackTask extends AsyncTask<String,String,String> {
-
-        @Override
-        protected String doInBackground(String... params) {
-            return WebService.updateFCMToken(spStore.getID(), Settings.getFCMToken());
-
-        }
-
-        @Override
-        protected void onPostExecute(String response) {
-            Log.e("login",response);
         }
     }
+
+
 }

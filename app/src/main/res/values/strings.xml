@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Police App</string>
+    <string name="title_activity_news_view">NewsViewActivity</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_complaint_register">ComplaintRegisterActivity</string>
 </resources>
