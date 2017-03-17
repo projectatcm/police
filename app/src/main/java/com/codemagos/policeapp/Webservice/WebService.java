@@ -24,7 +24,7 @@ import java.util.List;
 public class WebService {
 
 /*    static String reg_url = "http://codemagos.in/Mybook/index.php";*/
-    static String SITE_URL = "http://192.168.1.102/project/ops_server/webservice/";
+    static String SITE_URL = "http://10.0.2.2/project/ops_server/webservice/";
 
     public static String postData(String action_URL, String data) {
         String responce = "";
@@ -144,6 +144,21 @@ public class WebService {
         String url = "get_news.php?id="+id;
         String responce = getData(url);
         return responce;
+    }
+    public static String complaintRegistration(String user_id,String title,String content,String location) {
+        Log.w("-->", "in uer login web service method");
+        String data = null;
+        try {
+            data = URLEncoder.encode("user_id", "UTF-8") + "=" + URLEncoder.encode(user_id, "UTF-8") + "&" +
+                    URLEncoder.encode("title", "UTF-8") + "=" + URLEncoder.encode(title, "UTF-8") + "&" +
+                    URLEncoder.encode("content", "UTF-8") + "=" + URLEncoder.encode(content, "UTF-8") + "&" +
+                    URLEncoder.encode("location", "UTF-8") + "=" + URLEncoder.encode(location, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+        return postData("register_user.php", data);
+
     }
     public static String getComplaint(String id) {
         String url = "get_complaint.php?id="+id;

@@ -40,6 +40,12 @@
                 android:layout_height="120dp"
                 android:onClick="navigation"
                 android:text=" Laws" />
+            <Button
+                android:id="@+id/btn_numbers"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:onClick="navigation"
+                android:text="Important Numbers" />
 
             <Button
                 android:id="@+id/btn_request"
@@ -48,12 +54,7 @@
                 android:onClick="navigation"
                 android:text="Service Request" />
 
-            <Button
-                android:id="@+id/btn_numbers"
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:onClick="navigation"
-                android:text="Important Numbers" />
+
 
             <Button
                 android:id="@+id/btn_settings"

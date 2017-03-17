@@ -22,8 +22,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class ComplaintsActivity extends AppCompatActivity {
-ListView list_complaints;
+    ListView list_complaints;
     SharedPreferencesStore spStore;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +34,11 @@ ListView list_complaints;
         BackTask backTask = new BackTask();
         backTask.execute();
 
+    }
+
+    public void newComplaint(View v) {
+        startActivity(new Intent(getApplicationContext(), ComplaintRegisterActivity.class));
+        finish();
     }
 
     protected class BackTask extends AsyncTask<String, String, String> {
@@ -46,7 +52,7 @@ ListView list_complaints;
         @Override
         protected void onPostExecute(String response) {
             Log.e("complaints", response);
-      try {
+            try {
                 JSONObject responseObject = new JSONObject(response);
                 if (responseObject.getString("status").equals("success")) {
                     Toast.makeText(getApplicationContext(), responseObject.getString("message"), Toast.LENGTH_SHORT).show();

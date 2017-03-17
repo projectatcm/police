@@ -25,8 +25,8 @@ public class ComplaintsAdapter extends ArrayAdapter {
     ArrayList status;
     Activity activity;
 
-    public ComplaintsAdapter(Activity activity,ArrayList titles,ArrayList dates,ArrayList status) {
-        super(activity, R.layout.list_complaint_row,titles);
+    public ComplaintsAdapter(Activity activity, ArrayList titles, ArrayList dates, ArrayList status) {
+        super(activity, R.layout.list_complaint_row, titles);
         this.activity = activity;
         this.titles = titles;
         this.dates = dates;
@@ -37,7 +37,7 @@ public class ComplaintsAdapter extends ArrayAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater layoutInflater = activity.getLayoutInflater();
-        View rowView = layoutInflater.inflate(R.layout.list_complaint_row,null);
+        View rowView = layoutInflater.inflate(R.layout.list_complaint_row, null);
 
         TextView txt_status = (TextView) rowView.findViewById(R.id.txt_status);
         TextView txt_title = (TextView) rowView.findViewById(R.id.txt_title);
@@ -49,8 +49,21 @@ public class ComplaintsAdapter extends ArrayAdapter {
 
         txt_title.setText(title);
         txt_date.setText(date);
-        txt_status.setText(stat);
 
+        switch (stat) {
+            case "0":
+                txt_status.setText("Unseen");
+                break;
+            case "1":
+                txt_status.setText("ACCEPTED");
+                break;
+            case "2":
+                txt_status.setText("ACCEPTED");
+                break;
+            case "3":
+                txt_status.setText("REJECTED");
+                break;
+        }
 
 
         return rowView;

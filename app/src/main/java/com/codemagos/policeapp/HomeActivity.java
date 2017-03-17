@@ -1,6 +1,7 @@
 package com.codemagos.policeapp;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -33,6 +34,16 @@ SharedPreferencesStore spStore;
                 break;
             case R.id.btn_complaints:
                 startActivity(new Intent(getApplicationContext(),ComplaintsActivity.class));
+                break;
+            case R.id.btn_law:
+                Intent viewIntent =
+                        new Intent("android.intent.action.VIEW",
+                                Uri.parse("http://lawcommissionofindia.nic.in/1-50/report42.pdf"));
+                startActivity(viewIntent);
+                break;
+            case R.id.btn_numbers:
+
+                startActivity(new Intent(getApplicationContext(),NumbersActivity.class));
                 break;
 
         }

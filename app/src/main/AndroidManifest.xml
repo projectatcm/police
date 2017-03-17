@@ -3,6 +3,7 @@
     package="com.codemagos.policeapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
 
     <application
         android:allowBackup="true"
@@ -48,9 +49,9 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ComplaintRegisterActivity"
-            android:label="@string/title_activity_complaint_register"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ComplaintsActivity"></activity>
+            android:label="@string/title_activity_complaint_register" />
+        <activity android:name=".ComplaintsActivity" />
+        <activity android:name=".NumbersActivity"></activity>
     </application>
 
 </manifest>
