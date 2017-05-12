@@ -1,22 +1,15 @@
 package com.codemagos.policeapp;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.AsyncTask;
-import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.codemagos.policeapp.Adapters.NumbersListAdapter;
+import com.codemagos.policeapp.Data.Contact;
 import com.codemagos.policeapp.Webservice.WebService;
 
 import org.json.JSONArray;
@@ -47,8 +40,8 @@ public class NumbersActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            progressDialog = ProgressDialog.show(NumbersActivity.this, "",
-                    "Loading. Please wait...", true);
+                progressDialog = ProgressDialog.show(NumbersActivity.this, "",
+                        "Loading. Please wait...", true);
         }
 
         @Override
@@ -61,18 +54,21 @@ public class NumbersActivity extends AppCompatActivity {
         protected void onPostExecute(String response) {
             Log.e("Contacts", response);
             progressDialog.hide();
-            ArrayList names = new ArrayList();
-            final ArrayList numbers = new ArrayList();
+
+            ArrayList<Contact> contactLIst = new ArrayList();
+
             try {
                 JSONObject responseObject = new JSONObject(response);
                 if (responseObject.getString("status").equals("success")) {
                     JSONArray data = new JSONArray(responseObject.getString("data"));
+
                     for (int i = 0; i < data.length(); i++) {
-                        JSONObject contact = data.getJSONObject(i);
-                        names.add(contact.getString("name"));
-                        numbers.add(contact.getString("phone"));
+                        JSONObject contactArray = data.getJSONObject(i);
+                        Contact contact = new Contact(contactArray.getString("name"),contactArray.getString("phone"));
+                        contactLIst.add(contact);
+
                     }
-                    NumbersListAdapter numbersListAdapter = new NumbersListAdapter(NumbersActivity.this, names, numbers);
+                    NumbersListAdapter numbersListAdapter = new NumbersListAdapter(NumbersActivity.this,contactLIst);
                     list_numbers.setAdapter(numbersListAdapter);
                 }else{
                     // if the response if error

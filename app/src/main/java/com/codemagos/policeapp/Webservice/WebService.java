@@ -167,7 +167,7 @@ public class WebService {
             e.printStackTrace();
         }
 
-        return postData("register_user.php", data);
+        return postData("register_complaint.php", data);
 
     }
     public static String getComplaint(String id) {

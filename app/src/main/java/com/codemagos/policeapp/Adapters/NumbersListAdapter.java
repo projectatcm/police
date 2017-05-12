@@ -11,11 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.codemagos.policeapp.NumbersActivity;
+import com.codemagos.policeapp.Data.Contact;
 import com.codemagos.policeapp.R;
 
 import java.util.ArrayList;
@@ -25,15 +24,13 @@ import java.util.ArrayList;
  */
 
 public class NumbersListAdapter extends ArrayAdapter {
-    ArrayList names;
-    ArrayList numbers;
+    ArrayList<Contact> list;
     Activity activity;
 
-    public NumbersListAdapter(Activity activity, ArrayList names, ArrayList numbers) {
-        super(activity, R.layout.list_number_row, names);
+    public NumbersListAdapter(Activity activity, ArrayList list) {
+        super(activity, R.layout.list_number_row, list);
         this.activity = activity;
-        this.names = names;
-        this.numbers = numbers;
+        this.list = list;
 
     }
 
@@ -47,16 +44,18 @@ public class NumbersListAdapter extends ArrayAdapter {
         TextView txt_number = (TextView) rowView.findViewById(R.id.txt_number);
         ImageButton btn_call = (ImageButton) rowView.findViewById(R.id.btn_call);
 
-        String title = names.get(position).toString();
-        String date = numbers.get(position).toString();
+        Contact contact = list.get(position);
+
+        String title = contact.getName();
+        final String phone = contact.getPhone();
 
         txt_name.setText(title);
-        txt_number.setText(date);
+        txt_number.setText(phone);
         btn_call.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
         Toast.makeText(activity.getApplicationContext(), "Calling...", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + numbers.get(position)));
+        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phone));
         if (ActivityCompat.checkSelfPermission(activity, android.Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions

@@ -37,6 +37,9 @@ SharedPreferencesStore spStore;
             case R.id.btn_complaints:
                 startActivity(new Intent(getApplicationContext(),ComplaintsActivity.class));
                 break;
+            case R.id.btn_request:
+                startActivity(new Intent(getApplicationContext(),ComplaintsActivity.class));
+                break;
             case R.id.btn_law:
                 startActivity(new Intent(getApplicationContext(),LawActivity.class));
                 break;
@@ -61,6 +64,7 @@ SharedPreferencesStore spStore;
         switch (item.getItemId()){
             case R.id.logout:
                 spStore.clearLogData();
+                finish();
                 break;
         }
         return super.onOptionsItemSelected(item);

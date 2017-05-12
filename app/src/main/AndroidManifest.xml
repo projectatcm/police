@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.codemagos.policeapp">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
@@ -52,7 +54,8 @@
             android:label="@string/title_activity_complaint_register" />
         <activity android:name=".ComplaintsActivity" />
         <activity android:name=".NumbersActivity" />
-        <activity android:name=".LawActivity"></activity>
+        <activity android:name=".LawActivity" />
+        <activity android:name=".RequestActivity"></activity>
     </application>
 
 </manifest>

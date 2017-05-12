@@ -24,5 +24,6 @@ SharedPreferencesStore spStore;
         }
 
         startActivity(intent);
+        finish();
     }
 }

@@ -70,7 +70,7 @@ Button btn_login,btn_register;
                 if (responseObject.getString("status").equals("success")) {
                     Toast.makeText(getApplicationContext(), responseObject.getString("message"), Toast.LENGTH_SHORT).show();
                     JSONObject data = new JSONObject(responseObject.getString("data"));
-                    spStore.setLogData(data.getString("id"), data.getString("name"), data.getString("email"));
+                    //spStore.setLogData(data.getString("id"), data.getString("name"), data.getString("email"));
                     Intent intent = new Intent(getApplicationContext(),HomeActivity.class);
                     startActivity(intent);
                 }else{
