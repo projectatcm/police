@@ -32,6 +32,8 @@ Button btn_login,btn_register;
         txt_password = (EditText) findViewById(R.id.txt_password);
         // finding device id from settings class
         device_id = Settings.getDeviceID(getApplicationContext());
+        Toast.makeText(getApplicationContext(),
+                Settings.getFCMToken(),Toast.LENGTH_LONG).show();
 
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override

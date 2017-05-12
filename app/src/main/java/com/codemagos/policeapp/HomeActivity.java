@@ -6,6 +6,9 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -23,7 +26,6 @@ SharedPreferencesStore spStore;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         spStore = new SharedPreferencesStore(getApplicationContext());
-
     }
 
 
@@ -36,10 +38,7 @@ SharedPreferencesStore spStore;
                 startActivity(new Intent(getApplicationContext(),ComplaintsActivity.class));
                 break;
             case R.id.btn_law:
-                Intent viewIntent =
-                        new Intent("android.intent.action.VIEW",
-                                Uri.parse("http://lawcommissionofindia.nic.in/1-50/report42.pdf"));
-                startActivity(viewIntent);
+                startActivity(new Intent(getApplicationContext(),LawActivity.class));
                 break;
             case R.id.btn_numbers:
 
@@ -47,6 +46,24 @@ SharedPreferencesStore spStore;
                 break;
 
         }
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.logout:
+                spStore.clearLogData();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 

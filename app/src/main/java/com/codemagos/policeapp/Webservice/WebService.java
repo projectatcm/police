@@ -140,6 +140,16 @@ public class WebService {
         String responce = getData(url);
         return responce;
     }
+    public static String getContacts() {
+        String url = "get_contacts.php";
+        String responce = getData(url);
+        return responce;
+    }
+    public static String getContacts(String key) {
+        String url = "get_contacts.php?key="+key;
+        String responce = getData(url);
+        return responce;
+    }
     public static String getNews(String id) {
         String url = "get_news.php?id="+id;
         String responce = getData(url);
